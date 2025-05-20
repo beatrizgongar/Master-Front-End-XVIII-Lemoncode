@@ -1,0 +1,91 @@
+@use "sass:color" as *;
+
+$color-red: red;
+$color-letra-red: rgba(8, 141, 218, 0.89);
+$color-blue: blue;
+$color-letra-blue: rgba(166, 177, 10, 0.932);
+$color-green: green;
+$color-letra-green: grey;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  text-align: left;
+  padding-left: 25px;
+  margin: 10px;
+}
+
+@mixin generar-paleta($color, $color-letra) {
+  $i: 1;
+  @while $i <= 4 {
+    .lighten-#{$i} {
+      background-color: scale($color, $lightness: $i * 15%);
+      color: scale($color-letra, $lightness: $i * 15%);
+    }
+
+    .darken-#{$i} {
+      background-color: scale($color, $lightness: -1 * $i * 15%);
+      color: scale($color-letra, $lightness: $i * 15%);
+    }
+
+    $i: $i + 1;
+  }
+}
+.container-1 {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  text-align: center;
+  .base-color {
+    background-color: $color-red;
+  }
+  @include generar-paleta($color-red, $color-letra-red);
+}
+
+.container-2 {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  .base-color {
+    background-color: $color-blue;
+  }
+  @include generar-paleta($color-blue, $color-letra-blue);
+}
+
+.container-3 {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  .base-color {
+    background-color: $color-green;
+  }
+  @include generar-paleta($color-green, $color-letra-green);
+}
+
+.box {
+  display: flex;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.base-color {
+  color: white;
+  width: 200px;
+  height: 100px;
+}
