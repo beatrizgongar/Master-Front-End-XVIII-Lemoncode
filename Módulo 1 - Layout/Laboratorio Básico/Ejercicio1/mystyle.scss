@@ -1,11 +1,12 @@
 @use "sass:color" as *;
+@use "sass:list";
 
-$color-red: red;
-$color-letra-red: rgba(8, 141, 218, 0.89);
-$color-blue: blue;
-$color-letra-blue: rgba(166, 177, 10, 0.932);
-$color-green: green;
-$color-letra-green: grey;
+// Por cada color nuevo que se añade en colores hay que añadirlo en colores-letra
+// y además crear el container correspondiente en index.html
+
+$colores: red, blue, green, pink, yellow;
+$colores-letra: rgba(8, 141, 218, 0.89), rgba(166, 177, 10, 0.932), grey,
+  rgb(247, 78, 106), rgb(34, 240, 51);
 
 * {
   box-sizing: border-box;
@@ -24,55 +25,8 @@ h1 {
   text-align: left;
   padding-left: 25px;
   margin: 10px;
+  color: rgb(60, 160, 135);
 }
-
-@mixin generar-paleta($color, $color-letra) {
-  $i: 1;
-  @while $i <= 4 {
-    .lighten-#{$i} {
-      background-color: scale($color, $lightness: $i * 15%);
-      color: scale($color-letra, $lightness: $i * 15%);
-    }
-
-    .darken-#{$i} {
-      background-color: scale($color, $lightness: -1 * $i * 15%);
-      color: scale($color-letra, $lightness: $i * 15%);
-    }
-
-    $i: $i + 1;
-  }
-}
-.container-1 {
-  display: flex;
-  flex-direction: row;
-  padding-left: 10px;
-  text-align: center;
-  .base-color {
-    background-color: $color-red;
-  }
-  @include generar-paleta($color-red, $color-letra-red);
-}
-
-.container-2 {
-  display: flex;
-  flex-direction: row;
-  padding-left: 10px;
-  .base-color {
-    background-color: $color-blue;
-  }
-  @include generar-paleta($color-blue, $color-letra-blue);
-}
-
-.container-3 {
-  display: flex;
-  flex-direction: row;
-  padding-left: 10px;
-  .base-color {
-    background-color: $color-green;
-  }
-  @include generar-paleta($color-green, $color-letra-green);
-}
-
 .box {
   display: flex;
   border-radius: 10px;
@@ -84,8 +38,38 @@ h1 {
   margin: 5px;
 }
 
-.base-color {
-  color: white;
-  width: 200px;
-  height: 100px;
+@mixin generar-paleta($color-paleta, $color-letra-paleta) {
+  $i: 1;
+  @while $i <= 4 {
+    .lighten-#{$i} {
+      background-color: scale($color-paleta, $lightness: $i * 15%);
+      color: scale($color-letra-paleta, $lightness: $i * 15%);
+    }
+
+    .darken-#{$i} {
+      background-color: scale($color-paleta, $lightness: -1 * $i * 15%);
+      color: scale($color-letra-paleta, $lightness: $i * 15%);
+    }
+
+    $i: $i + 1;
+  }
+}
+
+@for $i from 1 through list.length($colores) {
+  .container-#{$i} {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    text-align: center;
+    .base-color {
+      background-color: list.nth($colores, $i);
+      color: white;
+      width: 200px;
+      height: 100px;
+    }
+    @include generar-paleta(
+      list.nth($colores, $i),
+      list.nth($colores-letra, $i)
+    );
+  }
 }
