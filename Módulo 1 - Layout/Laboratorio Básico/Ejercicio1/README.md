@@ -49,7 +49,7 @@ Generamos la paleta de colores con @mixin con un bucle @while:
 ```
 
 Y los contenedores se generan de forma dinámica con un bucle for en función de la longitud de la lista $colores.
-Para contenedor se utiliza generar-paleta con @include y se utilizan los valores de la lista de $colores y $colores-letra que corresponda:
+Para cada contenedor se utiliza generar-paleta con @include y se utilizan los valores de la lista de $colores y $colores-letra que corresponda:
 
 ```CSS
 @for $i from 1 through list.length($colores) {
@@ -76,6 +76,6 @@ Para contenedor se utiliza generar-paleta con @include y se utilizan los valores
 
 El resultado para una paleta de 5 colores es:</p>
 
-![Resultado](./Ejercicio1/imagenes/PaletaColores.png)
+![Resultado](./imagenes/PaletaColores.png)
 
 Si se quisieran añadir más colores con incluir el nuevo color en $colores y $colores-letra y el nuevo contenedor en index.html se generaría dinámicamente.
