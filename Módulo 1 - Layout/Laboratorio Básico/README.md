@@ -2,4 +2,7 @@
 
 Se realizan cuatro ejercicios:
 
-- <a href="https://github.com/beatrizgongar/Master-Front-End-XVIII-Lemoncode/tree/main/M%C3%B3dulo%201%20-%20Layout/Laboratorio%20B%C3%A1sico/Ejercicio1" title="Laboratorio Básico Módulo Layout">Ejercicio 1 - Crear una Paleta de colores dinámica.</a>
+- [Ejercicio 1 - Crear una Paleta de colores dinámica.](./Ejercicio1)
+- [Ejercicio 2 - Crear dos temas distintos y mostrar los resultados en una página.](./Ejercicio2)
+- [Ejercicio 3 - Crear la barra de navegación de la imagen usando Flexbox.](./Ejercicio3)
+- [Ejercicio 4 - Crearemos un elemento de tipo card con Grid CSS.](./Ejercicio4)

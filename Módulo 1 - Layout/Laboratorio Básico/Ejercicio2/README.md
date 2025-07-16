@@ -18,70 +18,65 @@ Para visualizar los cambios debería ser suficiente importar un tema u otro en e
 
 ## Resolución
 
-Se han utilizado las funciones list y color de SASS
+Se han utilizado las función list de Sass y se ha importado el archivo temas:
 
 ```CSS
-@use "sass:color" as *;
 @use "sass:list";
+@use "temas" as temas;
 ```
 
-Dos listas una para los colores que se utilizan en la paleta y otra para los colores de las letras
+En el archivo temas hemos incluido los valores de los dos temas:
 
 ```CSS
-$colores: red, blue, green, pink, yellow;
-$colores-letra: rgba(8, 141, 218, 0.89), rgba(166, 177, 10, 0.932), grey,
-  rgb(247, 78, 106), rgb(34, 240, 51);
+$numero-temas: 1, 2;
+$base-color: red, blue;
+$important-color: brown, rgb(14, 14, 94);
+$warning-color: pink, aqua;
+$principal-font: "Segoe UI", "Courier New";
+$secondary-font: "Arial", "Verdana";
+$shadow: -10px 10px 10px rgb(59, 59, 59), 10px 10px 10px rgb(59, 59, 59);
+$border-radius: 3px, 7px;
+
 ```
 
-Generamos la paleta de colores con @mixin con un bucle @while:
+Y se generan los dos contenedores de los temas de manera dinámica:
 
 ```CSS
-@mixin generar-paleta($color-paleta, $color-letra-paleta) {
-  $i: 1;
-  @while $i <= 4 {
-    .lighten-#{$i} {
-      background-color: scale($color-paleta, $lightness: $i * 15%);
-      color: scale($color-letra-paleta, $lightness: $i * 15%);
-    }
 
-    .darken-#{$i} {
-      background-color: scale($color-paleta, $lightness: -1 * $i * 15%);
-      color: scale($color-letra-paleta, $lightness: $i * 15%);
-    }
-
-    $i: $i + 1;
-  }
-}
-```
-
-Y los contenedores se generan de forma dinámica con un bucle for en función de la longitud de la lista $colores.
-Para cada contenedor se utiliza generar-paleta con @include y se utilizan los valores de la lista de $colores y $colores-letra que corresponda:
-
-```CSS
-@for $i from 1 through list.length($colores) {
+@for $i from 1 through list.length(temas.$numero-temas) {
   .container-#{$i} {
-    display: flex;
-    flex-direction: row;
-    padding-left: 10px;
-    text-align: center;
-    .base-color {
-      background-color: list.nth($colores, $i);
-      color: white;
-      width: 200px;
-      height: 100px;
+    padding-left: 50px;
+    color: black;
+    width: 150px;
+    height: 605px;
+    .box {
+      border-radius: list.nth(temas.$border-radius, $i);
     }
-    @include generar-paleta(
-      list.nth($colores, $i),
-      list.nth($colores-letra, $i)
-    );
+    .base {
+      background-color: list.nth(temas.$base-color, $i);
+    }
+    .important {
+      background-color: list.nth(temas.$important-color, $i);
+    }
+    .warning {
+      background-color: list.nth(temas.$warning-color, $i);
+    }
+    .shadow {
+      box-shadow: list.nth(temas.$shadow, $i);
+    }
+    .principal-font {
+      font-family: list.nth(temas.$principal-font, $i);
+    }
+    .secondary-font {
+      font-family: list.nth(temas.$secondary-font, $i);
+    }
   }
 }
+
 ```
 
 ## Resultado
 
-El resultado para una paleta de 5 colores es:</p>
+El resultado es:</p>
 
-![Resultado](./imagenes/PaletaColores.png)
-
-Si se quisieran añadir más colores con incluir el nuevo color en $colores y $colores-letra y el nuevo contenedor en index.html se generaría dinámicamente.
+![Resultado](./imagenes/Captura_temas.png)

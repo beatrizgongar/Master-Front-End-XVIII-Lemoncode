@@ -12,7 +12,7 @@
 
 ## Resolución
 
-Se han utilizado las funciones list y color de SASS
+Se han utilizado las funciones list y color de Sass
 
 ```CSS
 @use "sass:color" as *;
