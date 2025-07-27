@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+h1 {
+  text-align: left;
+  padding-left: 25px;
+  margin: 10px;
+  color: rgb(60, 160, 135);
+}
+
+.container {
+  margin: 10px;
+  border: 1px solid black;
+}
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid blue;
+}
+
+.card {
+  border: 1px solid red;
+}

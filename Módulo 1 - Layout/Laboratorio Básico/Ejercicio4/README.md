@@ -2,7 +2,7 @@
 
 ## Ejercicio 4
 
-<b>CCrearemos un elemento de tipo card con Grid CSS.</b>
+<b>Crearemos un elemento de tipo card con Grid CSS.</b>
 
 Las alineaciones deberán hacerse con esta característica, pero el html es totalmente abierto.
 
