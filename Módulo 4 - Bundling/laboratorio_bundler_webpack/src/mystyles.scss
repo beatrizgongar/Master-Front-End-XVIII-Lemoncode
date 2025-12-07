@@ -1,0 +1,18 @@
+$back-color: cadetblue;
+$letra-color: white;
+$entorno-color: rgb(233, 73, 166);
+$font: bold;
+
+.cadetblue-background {
+  background-color: $back-color;
+  color: $letra-color;
+  font-weight: $font;
+}
+.entorno-background {
+  background-color: $entorno-color;
+  color: $letra-color;
+  font-weight: $font;
+}
+img {
+  width: 200px;
+}
