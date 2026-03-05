@@ -78,7 +78,7 @@ Este script nos permite lanzar webpack desde la línea de comandos a través de 
 
 El archivo **`package.json`** quedará así:
 
-_./.package.json_
+_./package.json_
 
 ![Resultado](./imagenes/Imagen3.png)
 
@@ -914,7 +914,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <div>
     <h1>Hola desde React DOM</h1>
-  </div>
+  </div>,
 );
 ```
 
@@ -1386,7 +1386,7 @@ _./prod.env_
 ENTORNO = 'Entorno PROD'
 ```
 
-Modifiamos el archivo para desarrollo **`webpack.dev.js`**:
+Modificamos el archivo para desarrollo **`webpack.dev.js`**:
 
 _./webpack.dev.js_
 
@@ -1479,6 +1479,29 @@ root.render(
     <img src={logo} />
   </div>
 );
+```
+
+_./mystyles.scss_
+
+```css
+$back-color: cadetblue;
+$letra-color: white;
+$entorno-color: rgb(233, 73, 166);
+$font: bold;
+
+.cadetblue-background {
+  background-color: $back-color;
+  color: $letra-color;
+  font-weight: $font;
+}
+.entorno-background {
+  background-color: $entorno-color;
+  color: $letra-color;
+  font-weight: $font;
+}
+img {
+  width: 200px;
+}
 ```
 
 Y el resultado:
