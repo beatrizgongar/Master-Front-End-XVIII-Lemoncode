@@ -9,3 +9,5 @@ Repositorio Master Front End XVIII Edición Lemoncode
 - [Módulo 3 - Lenguajes.](./Módulo%203%20-%20Lenguajes%20JS%20TS/)
 
 - [Módulo 4 - Bundling.](./Módulo%204%20-%20Bundling/)
+
+- [Módulo 5 - Frameworks.](./Módulo%205%20-%20Frameworks/)
